@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Клиенты</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-5">
+    <div th:insert="blocks/header"></div>
+    <div class="row">
+        <div th:switch="${products}">
+            <div class="col-md-6">
+                <div th:case="*">
+                    <h2 class="my-5">Товары</h2>
+                    <table  border="1" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Вид</th>
+                            <th>Магазин</th>
+                            <th>Количество</th>
+                            <th>Цена</th>
+                            <th>Действия</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <th:block th:each="product : ${products}">
+                            <tr>
+                                <td th:text="${product.nameProduct}"></td>
+                                <td>
+                                    <from th:each="typeProduct : ${product.getTypeProduct()}">
+                                        <p th:text="${typeProduct.getNameTypeProduct()}"></p>
+                                    </from>
+                                </td>
+                                <td>
+                                    <from th:each="store : ${product.getStore()}">
+                                        <p th:text="${store.getNameStore()}"></p>
+                                    </from>
+                                </td>
+                                <td th:text="${product.countProduct}"></td>
+                                <td th:text="${product.priceProduct}" ></td>
+                                <td>
+                                    <a th:href="'/product/' + ${product.id} + '/edit'" class=" my-1 btn btn-success">Редактировать</a>
+                                    <a th:href="'/product/' + ${product.id} + '/remove'" class="btn btn-danger">Удалить</a>
+                                </td>
+                            </tr>
+                        </th:block>
+                    </table>
+                </div>
+                <p class="btn btn-primary"><a href="/product/add" style="color: aliceblue; text-decoration: none">Добавить товар</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

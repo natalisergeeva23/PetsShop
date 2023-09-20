@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Client</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Добавление Заказа</h1>
+    <form th:action="${'/zakaz/add'}" method="post" th:object="${zakazes}">
+        <table border="1" class="table table-bordered">
+            <tr>
+                <th>Товар</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Клиент</th>
+            </tr>
+            <tr>
+                <td>
+                    <select name="nameProduct">
+                        <option th:each="product : ${products}" th:value="${product.nameProduct}" th:text="${product.nameProduct}"></option>
+                    </select>
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="count" placeholder="Введите Количество" >
+                    <div th:if="${#fields.hasErrors('count')}" th:errors="*{count}"/>
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="price" placeholder="Введите Цену" >
+                    <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}"/>
+                </td>
+                <td>
+                    <select name="firstNameClient">
+                        <option th:each="client : ${clients}" th:value="${client.firstNameClient}" th:text="${client.firstNameClient}"></option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="my-1 btn btn-success">Добавить </button>
+    </form>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Client</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Редактирование Вида товара</h1>
+    <form method="post" th:object="${typeProduct}">
+        <table border="1" class="table table-bordered">
+            <tr>
+                <th>Название</th>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" type="text" name="nameTypeProduct" placeholder="Введите Название" th:field="*{nameTypeProduct}" id="nameTypeProduct" th:value="${nameTypeProduct}">
+                    <div th:if="${#fields.hasErrors('nameTypeProduct')}" th:errors="*{nameTypeProduct}"/>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-success">Изменить челика</button>
+    </form>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</html>

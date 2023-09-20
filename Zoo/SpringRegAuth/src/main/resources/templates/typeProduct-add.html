@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Type Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Добавление Вида Товара</h1>
+    <form th:action="${'/typeProduct/add'}" method="post" th:object="${typeProducts}">
+        <table border="1" class="table table-bordered">
+            <tr>
+                <th>Название</th>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" type="text" name="nameTypeProduct" placeholder="Введите Название" >
+                    <div th:if="${#fields.hasErrors('nameTypeProduct')}" th:errors="*{nameTypeProduct}"/>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="my-1 btn btn-success">Добавить челика</button>
+    </form>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</html>

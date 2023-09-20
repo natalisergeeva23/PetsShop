@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Client</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Редактирование товара</h1>
+    <form method="post" th:object="${product}">
+        <table border="1" class="table table-bordered">
+            <tr>
+                <th>Название</th>
+                <th>Вид</th>
+                <th>Магазин</th>
+                <th>Количество</th>
+                <th>Цена</th>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" type="text" name="nameProduct" placeholder="Введите Количество" th:field="*{nameProduct}" id="nameProduct" th:value="${nameProduct}">
+                    <div th:if="${#fields.hasErrors('nameProduct')}" th:errors="*{nameProduct}"/>
+                </td>
+                <td>
+                    <select name="nameTypeProduct">
+                        <div th:each="element : ${typeProduct}">
+                            <option th:text="${element.nameTypeProduct}"></option>
+                        </div>
+                    </select>
+                </td>
+                <td>
+                    <select name="nameStore">
+                        <div th:each="element : ${stores}">
+                            <option th:text="${element.nameStore}"></option>
+                        </div>
+                    </select>
+                </td>
+                <td>
+                    <input class="form-control" type="number" name="countProduct" placeholder="Введите Количество" th:field="*{countProduct}" id="countProduct" th:value="${countProduct}">
+                    <div th:if="${#fields.hasErrors('countProduct')}" th:errors="*{countProduct}"/>
+                </td>
+                <td>
+                    <input class="form-control" type="number" name="priceProduct" placeholder="Введите Цену" th:field="*{priceProduct}" id="priceProduct" th:value="${priceProduct}">
+                    <div th:if="${#fields.hasErrors('priceProduct')}" th:errors="*{priceProduct}"/>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-success">Изменить челика</button>
+    </form>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</html>
